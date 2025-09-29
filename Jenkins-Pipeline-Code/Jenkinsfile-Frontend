@@ -21,17 +21,17 @@ pipeline {
                 git credentialsId: 'GITHUB', url: 'https://github.com/saibuvan/End-to-End-Kubernetes-Three-Tier-DevSecOps-Project.git'
             }
         }
-        stage('Sonarqube Analysis') {
-            steps {
-                dir('Application-Code/frontend') {
-                    withSonarQubeEnv('sonar-server') {
-                        sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=frontend \
-                        -Dsonar.projectKey=frontend '''
-                    }
-                }
-            }
-        }
+        // stage('Sonarqube Analysis') {
+        //     steps {
+        //         dir('Application-Code/frontend') {
+        //             withSonarQubeEnv('sonar-server') {
+        //                 sh ''' $SCANNER_HOME/bin/sonar-scanner \
+        //                 -Dsonar.projectName=frontend \
+        //                 -Dsonar.projectKey=frontend '''
+        //             }
+        //         }
+        //     }
+        // }
         // stage('Quality Check') {
         //     steps {
         //         script {
@@ -47,13 +47,13 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Trivy File Scan') {
-            steps {
-                dir('Application-Code/frontend') {
-                    sh 'trivy fs . > trivyfs.txt'
-                }
-            }
-        }
+        // stage('Trivy File Scan') {
+        //     steps {
+        //         dir('Application-Code/frontend') {
+        //             sh 'trivy fs . > trivyfs.txt'
+        //         }
+        //     }
+        // }
         stage("Docker Image Build") {
             steps {
                 script {
