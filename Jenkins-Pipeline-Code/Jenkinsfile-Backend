@@ -93,8 +93,8 @@ pipeline {
                 dir('Kubernetes-Manifests-file/Backend') {
                     withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                         sh '''
-                            git config user.email "aman07pathak@gmail.com"
-                            git config user.name "AmanPathak-DevOps"
+                            git config user.email "buvaneshganesan29@gmail.com"
+                            git config user.name "Saibuvan"
                             git pull --rebase https://github.com/Saibuvan/End-to-End-Kubernetes-Three-Tier-DevSecOps-Project main
                             BUILD_NUMBER=${BUILD_NUMBER}
                             echo $BUILD_NUMBER
